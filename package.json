@@ -4,7 +4,7 @@
   "description": "Generate coverage report for your dotnet project in one click",
   "publisher": "vitor-lacerda",
   "icon": "images/icon.png",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/vitorlfaria/auto-coverage"
