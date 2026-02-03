@@ -6,7 +6,7 @@ async function removeFolderByBlob(marker: string): Promise<void> {
     const testResultsFiles = new Set(files.map((x) => {
         var fullPath = x.fsPath;
         const index = fullPath.indexOf(marker);
-        return index === -1 
+        return index === -1
             ? fullPath
             : fullPath.slice(0, index + marker.length);
     }));
@@ -58,8 +58,8 @@ export async function collectTestResults(): Promise<vscode.TerminalExitStatus> {
 
 export async function generateReport(): Promise<vscode.TerminalExitStatus> {
     let terminal = vscode.window.createTerminal();
-    terminal.sendText("reportgenerator -reports:./**/coverage.cobertura.xml -targetdir:coverage_report -filefilters:-**Moq** -assemblyFilters:-*.Tests");
-    terminal.sendText("start ./coverage_report/index.html");
+    terminal.sendText("~/.dotnet/tools/reportgenerator -reports:'**/coverage.cobertura.xml' -targetdir:coverage_report -filefilters:'-**Moq**' -assemblyFilters:'-*.Tests'");
+    terminal.sendText("open ./coverage_report/index.html");
     terminal.sendText("exit");
     return new Promise<vscode.TerminalExitStatus>((resolve, reject) => {
         const disposeToken = vscode.window.onDidCloseTerminal(async (closedTermianl) => {
